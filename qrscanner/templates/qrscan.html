@@ -1,8 +1,11 @@
 {% load staticfiles %}
 <html>
     <head>
-       <script type="text/javascript" src="{% static 'instascan.min.js' %}"></script>
+
     </head>
+        <script type="text/javascript" src="{% static 'instascan.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'jquery.js' %}"></script>
+
 
     <body>
         <div align="left">
@@ -11,16 +14,26 @@
 
     </body>
     <script type="text/javascript">
+        //AJAX requests will always get the csrftoken
+        $(document).ajaxSend(function (event, jqxhr, settings) {
+            jqxhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+        });
         let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
-
-        //scan content
         scanner.addListener('scan', function (content) {
-            //scanned content decoded from QR is saved in content
-            var userid = content;
-            console.log(userid);
+
+            //ajax request to server
+            $.ajax({
+            type : "POST",
+            url: "",
+            data: {
+                code: content,
+            },
+            success:function(){alert("QR code Scanned.")},
+
         });
 
-        //enumerate available camera
+        console.log(content);
+        });
         Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
             scanner.start(cameras[0]);
