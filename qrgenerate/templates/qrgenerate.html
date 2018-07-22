@@ -1,10 +1,10 @@
 {% load qr_code %}
 
 
-<div>
-    {% qr_from_text user_id size=20 border=6 %}
+<div align="center">
+    {% qr_from_text user_id size="5" image_format="png" error_correction="L" %}
 </div>
 
-<div>
-    User Id : {{ user_id }}
+<div align="center">
+    <p>User Id : {{ user_id }}</p>
 </div>
