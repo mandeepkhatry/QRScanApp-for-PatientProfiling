@@ -19,6 +19,6 @@ from django.conf.urls import include, url
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^scanner/', include('qrscanner.urls')),
+    url(r'^scan/', include('qrscanner.urls')),
 ]
 
