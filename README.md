@@ -11,37 +11,6 @@ QrCode Scanning app for PatientProfiling that generates a unique token for patie
   <li>django-qr-code module</li>
 </ul>
 
-NOTES:
-
-Secret Key has been deleted. Create your own project then copy paste ur secret key in settings.py file.
-
-"""
-
-DATABASES = {
-
-    'default': {
-    
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        
-        'NAME': '',
-        
-        'USER': '',
-        
-        'PASSWORD': '',
-        
-        'HOST': '',
-        
-        'PORT': '1234',
-        
-    }
-    
-}
-
-"""
-
-After setting up postgresql ( https://www.techrepublic.com/blog/diy-it-guy/diy-a-postgresql-database-server-setup-anyone-can-handle/ ),
-enter the name of your database in 'NAME' field; username, password to connect to the DB server in 'USER', 'PASSWORD' fields. 'HOST' field can be
-left empty.
 Apps:
 1.QrScanner - used by receptionist
 2.QRgenerate - should be called when user wants to generate his own QR code from profile app
